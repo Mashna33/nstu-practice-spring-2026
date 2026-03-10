@@ -39,4 +39,6 @@ jobs:
       - name: Install dependencies
         run: uv sync
       - name: Test code with pytest
-        run: uv run pytest
+        run: |
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }}
+          uv run pytest --changed-files=$FILES

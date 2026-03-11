@@ -72,7 +72,7 @@ class LogisticRegression:
         # db = mean(p - y)
         p = self.predict(x)
         n = x.shape[0]
-        diff = (p - y)
+        diff = p - y
         dw = (x.T @ diff) / n
         db = np.mean(diff)
         return dw, np.array(db)
